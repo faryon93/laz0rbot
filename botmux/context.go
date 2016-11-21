@@ -23,7 +23,7 @@ type Context struct {
 
 func (this *Context) SendText(format string, values ...interface{}) (error) {
 	// setup the text
-	message := fmt.Sprintf(format, values)
+	message := fmt.Sprintf(format, values...)
 
 	// send a text message to the user
 	msg := tgbotapi.NewMessage(this.Message.Chat.ID, message)

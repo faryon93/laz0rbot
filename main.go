@@ -6,8 +6,6 @@ import (
 
     "github.com/faryon93/laz0rbot/botmux"
     "github.com/faryon93/laz0rbot/ikr"
-
-    "gopkg.in/telegram-bot-api.v4"
 )
 
 // ----------------------------------------------------------------------------------
