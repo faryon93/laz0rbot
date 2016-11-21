@@ -10,6 +10,16 @@ import (
     "gopkg.in/telegram-bot-api.v4"
 )
 
+// ----------------------------------------------------------------------------------
+//  constants
+// ----------------------------------------------------------------------------------
+
+const (
+    TEXT_USAGE = "Welcome to the LLT telegram bot! How can I help you?\n\n" +
+                 "Available Commands:\n" +
+                 "/ikr - IKR planning"
+)
+
 
 // ----------------------------------------------------------------------------------
 //  application entry
@@ -41,8 +51,10 @@ func main() {
 // ----------------------------------------------------------------------------------
 
 func BotStart(ctx botmux.Context, args string) (botmux.CommandFunc) {
-    msg := tgbotapi.NewMessage(ctx.Message.Chat.ID, "Welcome to the LLT telegram bot! How can I help you?\n\nAvailable Commands:\n/ikr - IKR planning")
-    ctx.Bot.Send(msg)
+    err := ctx.SendText(TEXT_USAGE)
+    if err != nil {
+        log.Println("failed to send text:", err.Error())
+    }
 
     return nil
 }

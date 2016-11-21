@@ -13,9 +13,12 @@ import (
 // ----------------------------------------------------------------------------------
 
 const (
-    ATTEND_FINISH_TEXT = "You are now registrated as %s to IKR. I will send you a " +
-                         "friendly reminder when IKR is about to start. You can " +
-                         "leave IKR with */ikr leave* whenever you want."
+    TEXT_USAGE =          "*IKR commands:*\n" +
+                          "/ikr schedule - display schedule for the next six weeks\n" +
+                          "/ikr attend - atted to IKR"
+    TEXT_ATTEND_FINISH  = "You are now registrated as %s to IKR. I will send you a " +
+                          "friendly reminder when IKR is about to start. You can " +
+                          "leave IKR with */ikr leave* whenever you want."
 )
 
 
@@ -42,7 +45,7 @@ func Entry(ctx botmux.Context, args string) (botmux.CommandFunc) {
 // ----------------------------------------------------------------------------------
 
 func Usage(ctx botmux.Context, args string) (botmux.CommandFunc) {
-    err := ctx.SendText("*IKR commands:*\n/ikr schedule - display schedule for the next six weeks\n/ikr attend - atted to IKR")
+    err := ctx.SendText(TEXT_USAGE)
     if err != nil {
         log.Println("failed to send usage command")
     }
@@ -71,7 +74,7 @@ func Attend(ctx botmux.Context, args string) (botmux.CommandFunc) {
 }
 
 func AttendFinish(ctx botmux.Context, args string) (botmux.CommandFunc) {
-    err := ctx.SendText("You are now registrated as " + args + " to IKR. " + "I will send you a friendly reminder when IKR is about to start. You can leave IKR with */ikr leave* whenever you want.")
+    err := ctx.SendText(TEXT_ATTEND_FINISH, args)
     if err != nil {
         log.Println("failed to send message:", err.Error())
     }

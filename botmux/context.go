@@ -1,6 +1,8 @@
 package botmux
 
 import (
+	"fmt"
+
 	"gopkg.in/telegram-bot-api.v4"
 )
 
@@ -19,7 +21,10 @@ type Context struct {
 //  member functions
 // ----------------------------------------------------------------------------------
 
-func (this *Context) SendText(message string) (error) {
+func (this *Context) SendText(format string, values ...interface{}) (error) {
+	// setup the text
+	message := fmt.Sprintf(format, values)
+
 	// send a text message to the user
 	msg := tgbotapi.NewMessage(this.Message.Chat.ID, message)
 	msg.ParseMode = "Markdown"
