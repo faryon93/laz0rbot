@@ -1,0 +1,11 @@
+{
+	"project": {
+		"name": "laz0rbot",
+		"description": "",
+		"package": "github.com/faryon93/laz0rbot"
+	},
+	"go": {
+		"min-version": "1.7.1"
+	},
+	"assets": []
+}
