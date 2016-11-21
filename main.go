@@ -41,15 +41,8 @@ func main() {
 // ----------------------------------------------------------------------------------
 
 func BotStart(ctx botmux.Context, args string) (botmux.CommandFunc) {
-    msg := tgbotapi.NewMessage(ctx.Message.Chat.ID, "Welcome to the LLT telegram bot! How can I help you?")
+    msg := tgbotapi.NewMessage(ctx.Message.Chat.ID, "Welcome to the LLT telegram bot! How can I help you?\n\nAvailable Commands:\n/ikr - IKR planning")
     ctx.Bot.Send(msg)
 
-    return BotTest
-}
-
-func BotTest(ctx botmux.Context, args string) (botmux.CommandFunc) {
-    msg := tgbotapi.NewMessage(ctx.Message.Chat.ID, "Okay, I will follow your wishes!")
-    ctx.Bot.Send(msg)
-
-    return nil  
+    return nil
 }

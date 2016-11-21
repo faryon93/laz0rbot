@@ -81,12 +81,18 @@ func Listen() (error) {
                 processed := false
                 for command, handler := range commands {
                     if (command == args[0]) {
+                        // parse the real arguments
+                        realArgs := ""
+                        if len(args) > 1 {
+                            realArgs = args[1]
+                        }
+
                         // execute the handler function and update the user session
                         ctx := Context{
                             Bot: Bot,
                             Message: update.Message,
                         }
-                        sessions[update.Message.From.ID] = handler(ctx, args[1])
+                        sessions[update.Message.From.ID] = handler(ctx, realArgs)
                         
                         // finished command handler
                         processed = true
