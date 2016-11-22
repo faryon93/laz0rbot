@@ -53,6 +53,7 @@ func init() {
 
 func (this *state) Save() (error) {
 	// TODO: implement marshalling to json file
+	return nil
 }
 
 func (this *state) AddIkrAttendee(id int, subscriptionType string) {
